@@ -28,11 +28,11 @@ int	select_idxb(t_pile *a, t_pile *b)
 	int	i;
 	int	cost_i;
 	int	cost_b;
-
 	ib = 0;
 	i = 0;
 	while (i < b->size)
 	{
+//		printf("-----IB == %d\n", ib);
 		cost_i = calculate_cost(a, b, find_next_idx(a, b->pile[0][i]), ib);
 		cost_b = calculate_cost(a, b, find_next_idx(a, b->pile[0][ib]), ib);
 		if (cost_i < cost_b)
