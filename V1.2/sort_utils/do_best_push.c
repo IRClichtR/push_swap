@@ -42,15 +42,15 @@ char	*loop_r_or_rev(t_pile *a, t_pile *b, int idx_a, int idx_b)
 	if (!res)
 		return (NULL);
 	if (ft_strncmp(select_move(a, idx_a), "rot", 3) == 0)
-		res = join_f (res, loop_ra(a, idx_a));
+		res = join_f2(res, loop_ra(a, idx_a));
 	else
-		res = join_f(res, loop_rra(a, idx_a));
+		res = join_f2(res, loop_rra(a, idx_a));
 	if (res == NULL)
-		return (free(res), NULL);
+		return (NULL);
 	if (ft_strncmp(select_move(b, idx_b), "rot", 3) == 0)
-		res = join_f (res, loop_rb(b, idx_b));
+		res = join_f2(res, loop_rb(b, idx_b));
 	else
-		res = join_f(res, loop_rrb(b, idx_b));
+		res = join_f2(res, loop_rrb(b, idx_b));
 	if (res == NULL)
 		return (free(res), NULL);
 	push(b, a);
@@ -69,7 +69,6 @@ static char	*only_push(t_pile *a, t_pile *b)
 char		*do_best_push(t_pile *a, t_pile *b, int idx_a, int idx_b)
 {
 	char	*res;
-	char	*temp;
 	int		push_case;
 	int		save_a;
 	int		save_b;
@@ -77,17 +76,17 @@ char		*do_best_push(t_pile *a, t_pile *b, int idx_a, int idx_b)
 	save_a = value_at_idx(a, idx_a);
 	save_b = value_at_idx(b, idx_b);
 	push_case = check_push_case(a, b, idx_a, idx_b);
-	temp = ft_calloc(1, sizeof(char));
+	res = ft_calloc(1, sizeof(char));
 	if (idx_a == 0 && idx_b == 0 && b->size != 0)
-		return (only_push(a, b));
+		return (free(res), only_push(a, b));
 	if (push_case == 1 || push_case == 2)
-		temp = join_f(temp, loop_rr_or_rrr(a, b, idx_a, idx_b));
-	if (temp == NULL)
+		res = join_f(res, loop_rr_or_rrr(a, b, idx_a, idx_b));
+	if (res == NULL)
 		return (NULL);
 	idx_a = find_idx(a, save_a);
 	idx_b = find_idx(b, save_b);
-	res = join_f(temp, loop_r_or_rev(a, b, idx_a, idx_b));
+	res = join_f(res, loop_r_or_rev(a, b, idx_a, idx_b));
 	if (res == NULL)
-		return (free(temp), NULL);
+		return (free(res), NULL);
 	return (res);
 }

@@ -32,15 +32,15 @@ char	*loop_push(t_pile *a, t_pile *b)
 	res = ft_calloc(1, sizeof(char));
 	if (!res)
 		return (NULL);
-	while (b->pile != 0)
+//printf(" idx_b = %d next_idx == %d\n", select_idxb(a, b), find_next_idx(a, b->pile[0][idx_b]));
+	while (b->size != 0)
 	{
 		idx_b = select_idxb(a, b);
 		idx_a = find_next_idx(a, b->pile[0][idx_b]);
-printf("SIZE_B = [%d] IDX_A = %d IDX_B = %d\n", b->size, idx_a, idx_b);
 		res = join_f(res, do_best_push(a, b, idx_a, idx_b));
 		if (res == NULL)
-			return (free(res), NULL);
-printf("RES = %s\n", res);
+			break ;
+//printf("RES = %s\n", res);
 		//debug
 		print_piles(a, b);
 		//endof debug//
@@ -51,10 +51,18 @@ printf("RES = %s\n", res);
 char	*push_back(t_pile *a, t_pile *b)
 {
 	char	*res;
+	int		smallest;
 
 	res = loop_push(a, b);
 	if (res == NULL)
 		return (NULL);
+	smallest = find_smallest(a);
+	if (ft_strncmp(select_move(a, smallest), "rot", 3) == 0)
+		res = join_f2(res, loop_ra(a, smallest));
+	else
+		res = join_f2(res, loop_rra(a, smallest));
+	if (res == NULL)
+		return (free(res), NULL);
 	return (res);
 }
 
@@ -151,5 +159,6 @@ printf("_\n");
 	free(a);
 	free(b);
 	free(res);
+	res = NULL;
 	return (0);
 }

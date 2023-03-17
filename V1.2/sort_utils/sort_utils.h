@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:31:14 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/10 14:51:58 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:22:32 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	*do_best_push(t_pile *a, t_pile *b, int idx_a, int idx_b);
 int		find_bigger(int a, int b);
 int		find_smaller(int a, int b);
 char	*join_f(char *s1, char *s2);
+char	*join_f2(char *s1, char *s2);
 char	*opti_push(t_pile *a, t_pile *b, int idx_a, int idx_b);
 char	*pb_beg(t_pile *a, t_pile *b, int *sorted_tab, int size);
 char	*pb_end(t_pile *a, t_pile *b, int *sorted_tab, int size);

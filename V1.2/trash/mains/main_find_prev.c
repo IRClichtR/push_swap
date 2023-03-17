@@ -1,20 +1,3 @@
-#include "swap_utils.h"
-
-int			find_next_idx(t_pile *pile, int elt)
-{
-	int	i;
-
-	i = 0;
-	while (i < pile->size)
-	{
-		if (pile->pile[0][i] > elt)
-		{
-			return (i);
-		}
-		i++;
-	}
-	return (-1);
-}
 /*
 int	main(int ac, char **av)
 {
@@ -35,7 +18,7 @@ int	main(int ac, char **av)
 	}
 	int elt = atoi(av[1]);
 printf("ELT = %d\n", elt);
-	int res = find_next_idx(pile, elt);
+	int res = find_previous_idx(pile, elt);
 	printf("RES = %d\n", res); 
 	free(pile->pile[0]);
 	free(pile->pile);

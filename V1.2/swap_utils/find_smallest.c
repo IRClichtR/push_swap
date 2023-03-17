@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_rr.c                                          :+:      :+:    :+:   */
+/*   find_smallest.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 20:59:20 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/17 21:35:39 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/03/17 17:48:58 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/03/17 18:05:10 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap_utils.h"
 
-char	*loop_rr(t_pile *a, t_pile *b, int idx_a, int idx_b)
+int	find_smallest(t_pile *pile)
 {
-	char	*res;
-	int		smallest;
+	int	i;
+	int	smallest;
 
-	res = ft_calloc(1, sizeof(char));
-	if (!res)
-		return (NULL);
-	if (is_bigger(idx_a, idx_b) == 1)
-		smallest = idx_b;
-	else
-		smallest = idx_a;
-	if (smallest == 0)
-		return (free(res), "");
-	while (smallest != 0)
+	i = 0;
+	smallest = pile->pile[0][0];
+	while (i < pile->size)
 	{
-		rotate_2(a, b);
-		res = join_f(res, "rr ");
-		if (res == NULL)
-			break ;
-		smallest--;
+		if (pile->pile[0][i] < smallest)
+			smallest = pile->pile[0][i];
+		i++;
 	}
-	return (res);
+	return (find_idx(pile, smallest));
 }
