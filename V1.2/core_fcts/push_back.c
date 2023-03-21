@@ -103,8 +103,8 @@ printf("SIZE_A = %d\n", a->size);
 printf("SIZE_B = %d\n", b->size);
 	a->pile = ft_calloc(1, sizeof(int *));
 	b->pile = ft_calloc(1, sizeof(int *));
-	a->pile[0] = ft_calloc(b->size + 3, sizeof(int));
-	b->pile[0] = ft_calloc(b->size, sizeof(int));
+	a->pile[0] = ft_calloc(b->size + a->size, sizeof(int));
+	b->pile[0] = ft_calloc(b->size + a-> size, sizeof(int));
 	int	i = 0;
 
 printf("BEFORE OPERATION\n");
@@ -158,7 +158,8 @@ printf("_\n");
 	free(b->pile);
 	free(a);
 	free(b);
-	free(res);
+	if (ft_strncmp(res, "", 2) != 0)
+		free(res);
 	res = NULL;
 	return (0);
 }
