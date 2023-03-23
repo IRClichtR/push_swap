@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 20:50:55 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/09 18:23:38 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:08:33 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*loop_rra(t_pile *pile, int idx)
 {
 	char	*res;
+
 	res = ft_calloc(1, sizeof(char));
 	if (!res)
 		return (NULL);

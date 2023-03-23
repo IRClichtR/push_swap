@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:02:51 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/03 13:37:56 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:13:26 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,26 @@
 
 char	*join_f(char *s1, char *s2)
 {
-	char	*tmp;
+	char			*cat_str;
+	unsigned int	i;
+	unsigned int	j;
 
-	if (!s1 && !s2)
+	i = 0;
+	j = 0;
+	cat_str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!cat_str)
 		return (NULL);
-	tmp = ft_strjoin(s1, s2);
+	while (s1[i] != '\0')
+	{
+		cat_str[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+	{
+		cat_str[i + j] = s2[j];
+		j++;
+	}
+	cat_str[i + j] = '\0';
 	free(s1);
-//	free(s2);
-	return (tmp);
+	return (cat_str);
 }
