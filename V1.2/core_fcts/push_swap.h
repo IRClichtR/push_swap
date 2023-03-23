@@ -23,8 +23,9 @@ typedef struct	s_pile
 # include "../swap_utils/swap_utils.h"
 # include "../sort_utils/sort_utils.h"
 
-char	*sort_a_left(t_pile *a);
-char	*push_back(t_pile *a, t_pile *b);
-char	*push_swap(t_pile *pile_a, t_pile *pile_b);
-char	*push_to_b(t_pile *a, t_pile *b, int *sorted_tab, int size);
+void	push_back(t_pile *a, t_pile *b);
+void	push_swap(t_pile *pile_a, t_pile *pile_b);
+void	push_to_b(t_pile *a, t_pile *b, int *sorted_tab, int size);
+int		set_pile(t_pile *a, t_pile *b, int ac, char **av);
+void	sort_a_left(t_pile *a);
 #endif

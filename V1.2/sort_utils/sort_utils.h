@@ -31,5 +31,5 @@ int		*save_pile(int **pile, int size);
 int		save_size(t_pile *src);
 int		select_idxb(t_pile *a, t_pile *b);
 char	*select_move(t_pile *src, int idx);
-int		*sort_pile(int **pile, int size);
+int		*sort_pile(int **pile);
 #endif

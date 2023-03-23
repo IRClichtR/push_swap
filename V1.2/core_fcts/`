@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_to_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 12:47:52 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/10 10:21:41 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/03/10 10:31:09 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/03/10 10:31:23 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	*push_swap(t_pile *pile_a, t_pile *pile_b)
+static void	push_ends(t_pile *a, t_pile *b, int *sorted_tab, int size)
 {
-	int		*sorted_tab;
+	pb_beg(a, b, sorted_tab, size);
+	pb_end(a, b, sorted_tab, size);
+}
 
-	sorted_tab = sort_pile(a->pile);
-	if (sorted_tab == NULL)
-		return ;
-	push_to_b(a, b, a->size);
-	sort_a_left(a);
-	push_back(a, b);
-	free(sorted_tab);
+static void	push_mid(t_pile *a, t_pile *b, int *sorted_tab, int size)
+{
+	pb_mid1(a, b, sorted_tab, size);
+	pb_mid2(a, b, sorted_tab, size);
+}
+
+void		push_to_b(t_pile *a, t_pile *b, int *sorted_tab, int size)
+{
+	push_ends(a, b, sorted_tab, size);
+	push_mid(a, b, sorted_tab, size);
 }

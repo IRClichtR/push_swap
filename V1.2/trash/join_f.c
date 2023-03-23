@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_rr.c                                          :+:      :+:    :+:   */
+/*   join_f.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 20:59:20 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/21 11:16:15 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/02/28 14:02:51 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/03/21 10:13:26 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "swap_utils.h"
+#include "sort_utils.h"
 
-void	loop_rr(t_pile *a, t_pile *b, int idx_a, int idx_b)
+char	*join_f(char *s1, char *s2)
 {
-	int		smallest;
+	char			*cat_str;
+	unsigned int	i;
+	unsigned int	j;
 
-	if (is_bigger(idx_a, idx_b) == 1)
-		smallest = idx_b;
-	else
-		smallest = idx_a;
-	if (smallest == 0 || idx_a > a->size - 1 || idx_b > b->size - 1)
-		return ;
-	while (smallest != 0)
+	i = 0;
+	j = 0;
+	cat_str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!cat_str)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		rotate_2(a, b);
-		smallest--;
+		cat_str[i] = s1[i];
+		i++;
 	}
+	while (s2[j] != '\0')
+	{
+		cat_str[i + j] = s2[j];
+		j++;
+	}
+	cat_str[i + j] = '\0';
+	free(s1);
+	return (cat_str);
 }

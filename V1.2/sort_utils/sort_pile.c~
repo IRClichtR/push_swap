@@ -8,7 +8,7 @@ int	partition(int **pile, int low, int high)
 
 	i = low;
 	j = low;
-	pivot_value = pile[0][high];
+	pivot_value = pile[0][high];//search_med(pile, low, high);
 	while (j < high)
 	{
 		if (pile[0][j] <= pivot_value)

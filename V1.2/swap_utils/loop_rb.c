@@ -12,20 +12,11 @@
 
 #include "swap_utils.h"
 
-char	*loop_rb(t_pile *pile, int idx)
+void	loop_rb(t_pile *b, int idx)
 {
-	char	*res;
-
-	res = ft_calloc(1, sizeof(char));
-	if (!res)
-		return (NULL);
 	while (idx != 0)
 	{
-		rotate(pile);
-		res = join_f(res, "rb ");
-		if (res == NULL)
-			break ;
+		rotate(b, 'b');
 		idx--;
 	}
-	return (res);
 }

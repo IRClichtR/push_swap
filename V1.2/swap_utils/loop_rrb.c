@@ -12,23 +12,11 @@
 
 #include "swap_utils.h"
 
-char	*loop_rrb(t_pile *pile, int idx)
+void	loop_rrb(t_pile *b, int idx)
 {
-	char	*res;
-	char	*new_res;
-
-	res = ft_calloc(2, sizeof(char));
-	if (!res)
-		return (NULL);
-	res = "_";
-	while (idx != pile->size)
+	while (idx != b->size)
 	{
-		rev_rotate(pile);
-		new_res = ft_strjoin(res, "rrb ");
-		if (new_res == NULL)
-			return (free(res), NULL);
-		res = new_res;
+		rev_rotate(b, 'b');
 		idx++;
 	}
-	return (res);
 }

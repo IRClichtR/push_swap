@@ -12,12 +12,12 @@
 
 #include "swap_utils.h"
 
-void	rev_rotate(t_pile *pile)
+void	rev_rotate(t_pile *pile, char pile_name)
 {
 	int	last;
 	int	i;
 
-	if (pile->size == 0)
+	if (pile->size < 2)
 		return ;
 	last = find_last_idx(pile);
 	i = last - 1;
@@ -27,38 +27,8 @@ void	rev_rotate(t_pile *pile)
 		i--;
 		last--;
 	}
+	if (pile_name == 'a')
+		ft_printf("rra\n");
+	else
+		ft_printf("rrb\n");
 }
-/*
-int	main(int ac, char **av)
-{
-	if (ac < 2)
-	{
-		printf("Oops\n");
-		return (0);
-	}
-	t_pile *pile;
-	int	i;
-
-	pile = ft_calloc(1, sizeof(t_pile));
-	pile->pile = ft_calloc(1, sizeof(int *));
-	pile-> size = ac - 1;
-	pile->pile[0] = ft_calloc(pile->size, sizeof(int));
-	i = 0;
-	printf("Pile before\n");
-	while (i < pile->size)
-	{
-		pile->pile[0][i] = ft_atoi(av[i + 1]);
-		printf("%d\n", pile->pile[0][i]);
-		i++;
-	}
-	rev_rotate(pile);
-	i = 0;
-	printf("Pile after\n");
-	while (i < pile->size)
-	{
-		printf("%d\n", pile->pile[0][i]);
-		i++;
-	}
-	return (0);
-}
-*/

@@ -29,7 +29,7 @@ static void	put_zero(t_pile *dest)
 	}
 }
 
-void		push(t_pile *src, t_pile *dest)
+void		push(t_pile *src, t_pile *dest, char dest_name)
 {
 	if (src->size == 0)
 		return ;
@@ -39,4 +39,8 @@ void		push(t_pile *src, t_pile *dest)
 		rotate(src);
 	src->size -= 1;
 	dest->size += 1;
+	if (dest_name == 'a')
+		ft_printf("pa\n");
+	else
+		ft_printf("pb\n");
 }
