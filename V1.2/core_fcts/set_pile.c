@@ -1,19 +1,5 @@
 #include "push_swap.h"
 
-static int	check_av1(char	*av1)
-{
-	int	i;
-
-	i = 0;
-	while (av1[i])
-	{
-		if (ft_isdigit((int)av1[i] == 0 && av1[i] != ' ')
-			return (-1);
-		i++;
-	}
-	return (1);
-}
-
 static void	set_1av_a(t_pile *a, char* av)
 {
 	char	**args;
@@ -25,17 +11,17 @@ static void	set_1av_a(t_pile *a, char* av)
 	a->size = 1;
 	while (args[a->size] != NULL)
 		a->size++;
-	a->pile[0] = ft_calloc(args_size, sizeof(int));
+	a->pile[0] = ft_calloc(a->size, sizeof(int));
 	if (a->pile[0] == NULL)
 		return ;
 	while (args[i] != NULL)
 	{
-		a-pile[0][i] = ft_atoi(args[i]);
+		a->pile[0][i] = ft_atoi(args[i]);
 		i++;
 	}
 }
 
-static void	set_a(t_pile *a, char ** av, int ac)
+static void	set_a(t_pile *a, char **av, int ac)
 {
 	int	i;
 
@@ -44,9 +30,9 @@ static void	set_a(t_pile *a, char ** av, int ac)
 	if (!a->pile[0])
 		return ;
 	i = 0;
-	while (av[i] != NULL)
+	while (i < ac - 1)
 	{
-		a->pile[0][i] = av[i];
+		a->pile[0][i] = ft_atoi(av[i + 1]);
 		i++;
 	}
 }
@@ -59,14 +45,17 @@ int	set_pile(t_pile *a, t_pile *b, int ac, char **av)
 		return (-1) ;
 	if (ac < 3 && av[1] != NULL)
 	{
-		if (check_av1 == 0)
-			return (-1);
-		set_1av_a(a, av[2]);
+		if (check_av(ac, av) == -1)
+			return (free_all(a, b), -1);
+		set_1av_a(a, av[1]);
 	}
 	else
-		set_a(a, av + 1, ac);
+	{
+		if (check_av(ac, av) != -1)
+			set_a(a, av + 1, ac);
+	}
 	b->pile[0] = ft_calloc(a->size, sizeof(int));
 	if (!b->pile[0])
-		return (-1);
+		return (free_all(a, b), -1);
 	return (1);
 }

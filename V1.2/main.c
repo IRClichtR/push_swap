@@ -6,97 +6,60 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 21:42:49 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/09 22:20:43 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/24 18:21:03 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "core_fcts/push_swap.h"
 
-static void	free_all(t_pile *a, t_pile *b)
+void	free_all(t_pile *a, t_pile *b)
 {
-	free(a->pile[0]);
-	free(b->pile[0]);
-	free(a->pile);
-	free(b->pile);
-	free(pile_a);
-	free(pile_b);
-}
-
-static int	check_lim(char *arg)
-{
-	char	*first_digits;
-	int		i;
-
-	if (ft_strlen(arg) > 9 && ft_strlen(arg) < 12)
+	if (a->pile[0])
 	{
-		first_digits = ft_substr(arg, 0, 8);
-		if (!first_digits)
-			return (-1);
-		if (ft_isdigit(arg[0]) != 1 && (arg[0] != '+' || arg[0] != '-')
-		|| ft_atoi(first_digits) > 21474836)
-			return (free(first_digits), -1);
-		if (ft_strlen(arg) == 10)
-		{
-			if (
-		}
-		if (ft_strlen(arg) == 11)
-			if (arg[0] != '-')
-				return (free(first_digits), -1);
+		free(a->pile[0]);
+		a->pile[0] = NULL;
 	}
-	free(first_digits);
-	return (1);
-}
-
-static int	check_argument(char *arg)
-{
-	int	i;
-
-	if (ft_strlen(arg) > 10)
-		return (-1);
-	i = 0;
-	while (arg[++i] != 0)
-		if (ft_isdigit(arg[i] == 0)
-			return (-1);
-	if (ft_strlen(arg) > 9 && ft_isdigt(arg[0]) == 1 || check_lim(arg) == -1))
-		return (-1);
-	return (1);
-}
-
-static int	check_args(int ac, char **av)
-{
-	int	i;
-
-	if (ac < 2)
-		return (-1);
-	i = 0;
-	if (ac == 2)
-		if (check_av1(av[1]) == -1)
-			return (-1);
-	while (av[i] != NULL)
+	if (b->pile[0])
 	{
-		if 
+		free(b->pile[0]);
+		b->pile[0] = NULL;
 	}
-	return (1);
+	if (a->pile)
+	{
+		free(a->pile);
+		a->pile = NULL;	
+	}
+	if (b->pile)
+	{
+		free(b->pile);
+		b->pile = NULL;
+	}
+	free(a);
+	a = NULL;
+	free(b);
+	b = NULL;
 }
 
 int			main(int ac, char **av)
 {
 	t_pile	*a;
 	t_pile	*b;
+	int		set;
 
-	if (check_args(ac, av) == -1)
+	if (check_av(ac, av) == -1)
 		return (0);
 	a = ft_calloc(1, sizeof(t_pile));
 	b = ft_calloc(1, sizeof(t_pile));
 	if (!a || !b)
 		return (0);
-	int	set_pile(a, b, av, ac);
-	if (check_pile(a) == 1)
-		push_swap(pile_a, pile_b);
+	set = set_pile(a, b, ac, av);
+	if (set == -1)
+		return (free_all(a, b), 0);
+	push_swap(a, b);
 	free_all(a, b);
 	return (0);
 }
-
+/*
 
 
 
@@ -137,4 +100,4 @@ void	check_pushswap(t_pile *a, t_pile *b, int ac)
 	ft_printf("_**_ \n\n");
 	ft_printf("---- \n DEBUG PUSH_SWAP \n RES = %s\n");
 }
-//end of debug//
+//end of debug*/

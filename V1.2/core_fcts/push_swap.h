@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:35:35 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/16 17:09:33 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/24 18:31:59 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct	s_pile
 # include "../swap_utils/swap_utils.h"
 # include "../sort_utils/sort_utils.h"
 
+int		check_av(int ac, char **av);
+int		check_num(char *arg);
+void	free_all(t_pile *a, t_pile *b);
 void	push_back(t_pile *a, t_pile *b);
 void	push_swap(t_pile *pile_a, t_pile *pile_b);
 void	push_to_b(t_pile *a, t_pile *b, int *sorted_tab, int size);
