@@ -47,7 +47,7 @@ int	*sort_pile(t_pile *pile)
 	i = 0;
 	while (i < pile->size)
 	{
-		o_pile[i] = pile[0][i];
+		o_pile[i] = pile->pile[0][i];
 		i++;
 	}
 	beg = 0;

@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 10:20:25 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/24 17:57:51 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:59:19 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static int	check_dif(char **av)
 static int	check_args(int ac, char **av)
 {
 	int	i;
-	if (ac < 2)
-		return (-1);
 	if (ac == 2)
 	{
 		if (check_num(av[0]) == -1)

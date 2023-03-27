@@ -50,15 +50,14 @@ static void	loop_rr_or_rrr(t_pile *a, t_pile *b, int idx_a, int idx_b)
 
 void		do_best_push(t_pile *a, t_pile *b, int idx_a, int idx_b)
 {
-	int		push_case;
 	int		save_a;
 	int		save_b;
 
 	save_a = value_at_idx(a, idx_a);
 	save_b = value_at_idx(b, idx_b);
-	push_case = check_push_case(a, b, idx_a, idx_b);
 	if (idx_a == 0 && idx_b == 0 && b->size != 0)
 	{
+printf("do i do that ?\n");
 		push(b, a, 'a');
 		return ;
 	}

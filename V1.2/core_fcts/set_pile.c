@@ -30,9 +30,9 @@ static void	set_a(t_pile *a, char **av, int ac)
 	if (!a->pile[0])
 		return ;
 	i = 0;
-	while (i < ac - 1)
+	while (i < a->size)
 	{
-		a->pile[0][i] = ft_atoi(av[i + 1]);
+		a->pile[0][i] = ft_atoi(av[i]);
 		i++;
 	}
 }

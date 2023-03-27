@@ -1,6 +1,6 @@
 #include "swap_utils.h"
 
-static void	rev_rotation(t_pile *pile, char pile_name)
+static void	rev_rotation(t_pile *pile)
 {
 	int	last;
 	int	i;

@@ -1,12 +1,12 @@
 /* ************************************************************************* */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_push.c                                          :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:13:34 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/09 20:34:29 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:00:36 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,22 @@ static void	put_zero(t_pile *dest)
 	}
 }
 
+static void	rotation(t_pile *pile)
+{
+	int	i;
+	int	last;
+
+	if (pile->size < 2)
+		return ;
+	i = 0;
+	last = find_last_idx(pile);
+	while (i < last)
+	{
+		ft_swap(&pile->pile[0][i], &pile->pile[0][i + 1]);
+		i++;
+	}
+}
+
 void		push(t_pile *src, t_pile *dest, char dest_name)
 {
 	if (src->size == 0)
@@ -36,7 +52,7 @@ void		push(t_pile *src, t_pile *dest, char dest_name)
 	put_zero(dest);
 	ft_swap(&src->pile[0][0], &dest->pile[0][0]);
 	if (src->size > 1)
-		rotate(src);
+		rotation(src);
 	src->size -= 1;
 	dest->size += 1;
 	if (dest_name == 'a')

@@ -6,56 +6,68 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 21:42:49 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/24 18:21:03 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:18:06 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core_fcts/push_swap.h"
+//Debug______________________
 
-void	free_all(t_pile *a, t_pile *b)
+void	print_piles(t_pile *a, t_pile *b)
 {
-	if (a->pile[0])
+	int i;
+	int	size;
+	i = 0;
+	if (a->size > b->size)
+		size = a->size;
+	else 
+		size = b->size;
+printf("   A  B\n");
+printf("   _  _\n");
+	while (i < size)
 	{
-		free(a->pile[0]);
-		a->pile[0] = NULL;
+		printf("[%d]%d  %d\n", i, a->pile[0][i], b->pile[0][i]);
+		i++;
 	}
-	if (b->pile[0])
-	{
-		free(b->pile[0]);
-		b->pile[0] = NULL;
-	}
-	if (a->pile)
-	{
-		free(a->pile);
-		a->pile = NULL;	
-	}
-	if (b->pile)
-	{
-		free(b->pile);
-		b->pile = NULL;
-	}
-	free(a);
-	a = NULL;
-	free(b);
-	b = NULL;
+printf("   _  _\n");
 }
-
+//end of edbug ___________________//
 int			main(int ac, char **av)
 {
 	t_pile	*a;
 	t_pile	*b;
 	int		set;
+	char	*error;
 
-	if (check_av(ac, av) == -1)
+	error = "Error\n";
+	if (ac < 2)
 		return (0);
+	if (check_av(ac, av) == -1)
+	{
+		ft_putstr_fd(error, 2);
+		return (0);
+	}
 	a = ft_calloc(1, sizeof(t_pile));
 	b = ft_calloc(1, sizeof(t_pile));
 	if (!a || !b)
 		return (0);
 	set = set_pile(a, b, ac, av);
+printf("I go there\n");
+
 	if (set == -1)
+	{
+		ft_putstr_fd(error, 2);
 		return (free_all(a, b), 0);
+	}
+// Debug
+printf("___BEFORE___\n\n");
+print_piles(a, b);
+//End of Debug//
 	push_swap(a, b);
+// Debug
+printf("___AFTER___\n\n");
+print_piles(a, b);
+//End of Debug//
 	free_all(a, b);
 	return (0);
 }

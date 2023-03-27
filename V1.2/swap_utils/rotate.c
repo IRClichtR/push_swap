@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:33:03 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/08 15:09:46 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:36:43 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	rotate(t_pile *pile, char pile_name)
 		ft_swap(&pile->pile[0][i], &pile->pile[0][i + 1]);
 		i++;
 	}
-	if (pile_name == 'a)
+	if (pile_name == 'a')
 		ft_printf("ra\n");
 	else
 		ft_printf("rb\n");

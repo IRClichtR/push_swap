@@ -6,24 +6,24 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:29:51 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/02/28 12:29:54 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:41:23 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort_utils.h"
 
-int	*save_pile(int **pile, int size)
+int	*save_pile(t_pile *pile)
 {
 	int *o_pile;
 	int	i;
 
 	i = 0;
-	o_pile = ft_calloc(size, sizeof(int));
+	o_pile = ft_calloc(pile->size, sizeof(int));
 	if (!o_pile)
 		return (0);
-	while (i < size)
+	while (i < pile->size)
 	{
-		o_pile[i] = pile[0][i];
+		o_pile[i] = pile->pile[0][i];
 		i++;
 	}
 	return (o_pile);
