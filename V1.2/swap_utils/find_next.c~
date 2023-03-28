@@ -3,20 +3,6 @@
 int			find_next_idx(t_pile *pile, int elt)
 {
 	int	i;
-	int	big_elt;
-
-	i = 0;
-	big_elt = find_biggest(pile);
-	while (i < pile->size)
-	{
-		if (pile->pile[0][i] > elt && pile->pile[0][i] < big_elt)
-			big_elt = pile->pile[0][i];
-		i++;
-	}
-	return (big_elt);
-}
-/*
-	int	i;
 
 	i = 0;
 	while (i < pile->size)
@@ -29,6 +15,7 @@ int			find_next_idx(t_pile *pile, int elt)
 	}
 	return (-1);
 }
+/*
 int	main(int ac, char **av)
 {
 	if (ac < 3)

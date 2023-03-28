@@ -15,7 +15,6 @@
 
 #include "../core_fcts/push_swap.h"
 
-int		find_biggest(t_pile *pile);
 int		find_idx(t_pile *src, int elt);
 int		find_last_idx(t_pile *src);
 int		find_next_idx(t_pile *pile, int elt);
