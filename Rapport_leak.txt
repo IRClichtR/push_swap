@@ -1,2 +1,0 @@
-Remaining leak at loop_r_or_rev function. All functions loop seems to leak all
-together.

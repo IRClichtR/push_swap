@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 18:30:52 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/24 18:31:22 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:54:31 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_all(t_pile *a, t_pile *b)
 	if (a->pile)
 	{
 		free(a->pile);
-		a->pile = NULL;	
+		a->pile = NULL;
 	}
 	if (b->pile)
 	{

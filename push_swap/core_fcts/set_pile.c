@@ -6,13 +6,13 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:50:42 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/29 11:50:45 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:03:51 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	set_1av_a(t_pile *a, char* av)
+static void	set_1av_a(t_pile *a, char *av)
 {
 	char	**args;
 	int		i;
@@ -32,6 +32,7 @@ static void	set_1av_a(t_pile *a, char* av)
 		a->pile[0][i] = ft_atoi(args[i]);
 		i++;
 	}
+	free_argv(args);
 }
 
 static void	set_a(t_pile *a, char **av, int ac)
@@ -55,7 +56,7 @@ int	set_pile(t_pile *a, t_pile *b, int ac, char **av)
 	a->pile = ft_calloc(1, sizeof(int *));
 	b->pile = ft_calloc(1, sizeof(int *));
 	if (!a->pile || !b->pile)
-		return (-1) ;
+		return (-1);
 	if (ac < 3 && av[1] != NULL)
 	{
 		if (check_av(ac, av) == -1)

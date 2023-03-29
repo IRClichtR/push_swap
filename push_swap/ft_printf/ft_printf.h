@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:35:50 by ftuernal          #+#    #+#             */
-/*   Updated: 2022/12/27 13:36:11 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:14:45 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdio.h>
 
 int	arg_char(char c);

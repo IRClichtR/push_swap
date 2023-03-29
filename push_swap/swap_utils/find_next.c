@@ -6,13 +6,13 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:33:46 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/29 11:34:51 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:43:16 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap_utils.h"
 
-int			find_next_idx(t_pile *pile, int elt)
+int	find_next_idx(t_pile *pile, int elt)
 {
 	int	i;
 	int	big_elt;

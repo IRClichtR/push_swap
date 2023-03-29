@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:32:57 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/29 11:51:44 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:00:04 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ static void	put_in_order(t_pile *a)
 		loop_ra(a, smallest);
 	else
 		loop_rra(a, smallest);
-
 }
 
-void		sort_5(t_pile *a, t_pile *b)
+void	sort_5(t_pile *a, t_pile *b)
 {
 	int	*o_tab;
 	int	next;

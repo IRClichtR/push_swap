@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 11:37:03 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/27 14:14:35 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:03:13 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	check_neg_lim(char *arg)
 {
 	char	*first_digits;
 
-	if(ft_strlen(arg) > 11)
+	if (ft_strlen(arg) > 11)
 		return (-1);
 	if (ft_strlen(arg) < 11)
 		return (1);
@@ -37,10 +37,12 @@ static int	check_pos_lim(char *arg)
 	char	*first_digits;
 
 	if (arg[0] == '+')
+	{
 		if (ft_strlen(arg) < 11)
 			return (1);
 		else
 			arg += 1;
+	}
 	else if (ft_strlen(arg) < 10)
 		return (1);
 	if (ft_strlen(arg) > 10)
@@ -70,38 +72,29 @@ static int	check_if_number(char *arg)
 	return (1);
 }
 
-static int	skip_space(char *arg)
-{
-	int	i;
-
-	i = 0;
-	while (arg[i] == ' ' || arg[i] == '\t'
-		|| arg[i] == '\n' || arg[i] == '\v'
-		|| arg[i] == '\f' || arg[i] == '\r')
-		i++;
-	if (i == (int)ft_strlen(arg))
-		return (-1);
-	if (arg[i] == '-' || arg[i] == '+' || ft_isdigit(arg[i]) == 1)
-		return (i);
-	return (-1);
-}
-
 int	check_num(char *arg)
 {
-	int	i;
+	int		i;
+	char	**arg_chain;
 
-	if (skip_space(arg) == -1)
+	arg_chain = ft_split(arg, ' ');
+	if (arg_chain == NULL)
 		return (-1);
-	i = skip_space(arg);
-	if (check_if_number(&arg[i]) == -1)
-		return (-1);
-	if (arg[i] == '-')
+	i = 0;
+	while (arg_chain[i] != NULL)
 	{
-		if (check_neg_lim(arg) == -1)
+		if (check_if_number(arg_chain[i]) == -1)
 			return (-1);
+		if (arg_chain[i][0] == '-')
+		{
+			if (check_neg_lim(arg_chain[i]) == -1)
+				return (-1);
+		}
+		else
+			if (check_pos_lim(arg_chain[i]) == -1)
+				return (-1);
+		i++;
 	}
-	else
-		if (check_pos_lim(arg) == -1)
-			return (-1);
+	free_argv(arg_chain);
 	return (1);
 }

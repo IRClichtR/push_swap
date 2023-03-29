@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:54:26 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/02/14 10:03:05 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:44:57 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "swap_utils.h"
@@ -17,14 +17,5 @@ void	ft_swap(int *a, int *b)
 
 	temp = *a;
 	*a = *b;
-	*b = temp;	
+	*b = temp;
 }
-/*
-int main()
-{
-	int a = 1;
-	int b = 2;
-	ft_swap(&a, &b);
-	printf("%d %d\n", a, b);
-}
-*/

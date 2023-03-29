@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 10:20:25 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/27 13:59:19 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:54:42 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int	check_dif(char **av)
 static int	check_args(int ac, char **av)
 {
 	int	i;
+
 	if (ac == 2)
 	{
 		if (check_num(av[0]) == -1)
@@ -53,16 +54,21 @@ static int	check_args(int ac, char **av)
 	return (1);
 }
 
-int			check_av(int ac, char **av)
+int	check_av(int ac, char **av)
 {
-	char	**arg = ft_calloc(ac, sizeof(char *));
-	int	i;
-	int	check;
+	char	**arg;
+	int		i;
+	int		check;
 
+	if (ac < 2)
+		return (-1);
+	arg = ft_calloc(ac, sizeof(char *));
+	if (arg == NULL)
+		return (-1);
 	i = 0;
 	while (i < ac - 1)
 	{
-		arg[i] = ft_strdup(av[i+1]);
+		arg[i] = ft_strdup(av[i + 1]);
 		i++;
 	}
 	check = check_args(ac, arg);

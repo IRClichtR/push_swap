@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:54:30 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/29 11:54:32 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:22:56 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 static int	check_push_case(t_pile *a, t_pile *b, int idx_a, int idx_b)
 {
-	int	push_case;
+	int		push_case;
 	char	*move_a;
 	char	*move_b;
 
 	move_a = select_move(a, idx_a);
 	move_b = select_move(b, idx_b);
 	if (ft_strncmp(move_a, "rot", 3) == 0
-	&& ft_strncmp(move_b, "rot", 3) == 0)
+		&& ft_strncmp(move_b, "rot", 3) == 0)
 		push_case = 1;
 	else if (ft_strncmp(move_a, "rev", 3) == 0
-	&& ft_strncmp(move_b, "rev", 3) == 0)
+		&& ft_strncmp(move_b, "rev", 3) == 0)
 		push_case = 2;
-	else if (ft_strncmp(move_a, "rot", 3) == 0 
-	&& ft_strncmp(move_b, "rev", 3) == 0)
+	else if (ft_strncmp(move_a, "rot", 3) == 0
+		&& ft_strncmp(move_b, "rev", 3) == 0)
 		push_case = 3;
-	else if (ft_strncmp(move_a, "rev", 3) == 0 
-	&& ft_strncmp(move_b, "rot", 3) == 0)
+	else if (ft_strncmp(move_a, "rev", 3) == 0
+		&& ft_strncmp(move_b, "rot", 3) == 0)
 		push_case = 4;
 	else
 		push_case = 0;
@@ -60,7 +60,7 @@ static void	loop_rr_or_rrr(t_pile *a, t_pile *b, int idx_a, int idx_b)
 		return ;
 }
 
-void		do_best_push(t_pile *a, t_pile *b, int idx_a, int idx_b)
+void	do_best_push(t_pile *a, t_pile *b, int idx_a, int idx_b)
 {
 	int		save_a;
 	int		save_b;

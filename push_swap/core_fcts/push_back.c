@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_back.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 16:56:49 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/03/29 16:59:00 by ftuernal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	loop_push(t_pile *a, t_pile *b)
@@ -13,7 +25,7 @@ static void	loop_push(t_pile *a, t_pile *b)
 	}
 }
 
-void		push_back(t_pile *a, t_pile *b)
+void	push_back(t_pile *a, t_pile *b)
 {
 	int		smallest;
 
