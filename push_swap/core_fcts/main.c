@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 21:42:49 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/29 18:10:14 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:42:19 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 
 	if (check_av(ac, av) == -1)
 	{
-		ft_putstr_fd("Error 1\n", 2);
+		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	a = ft_calloc(1, sizeof(t_pile));
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	set = set_pile(a, b, ac, av);
 	if (set == -1)
 	{
-		ft_putstr_fd("Error 2\n", 2);
+		ft_putstr_fd("Error\n", 2);
 		return (free_all(a, b), 0);
 	}
 	push_swap(a, b);

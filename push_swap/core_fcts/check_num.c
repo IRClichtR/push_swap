@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 11:37:03 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/29 18:03:13 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/03/30 10:35:00 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static int	check_if_number(char *arg)
 	int	i;
 
 	i = 0;
+	if (ft_strncmp(arg, "-", 2) == 0)
+		return (-1);
 	if (arg[i] == '-' || arg[i] == '+')
 		i += 1;
 	while (arg[i] != '\0')
@@ -84,15 +86,15 @@ int	check_num(char *arg)
 	while (arg_chain[i] != NULL)
 	{
 		if (check_if_number(arg_chain[i]) == -1)
-			return (-1);
+			return (free_argv(arg_chain), -1);
 		if (arg_chain[i][0] == '-')
 		{
 			if (check_neg_lim(arg_chain[i]) == -1)
-				return (-1);
+				return (free_argv(arg_chain), -1);
 		}
 		else
 			if (check_pos_lim(arg_chain[i]) == -1)
-				return (-1);
+				return (free_argv(arg_chain), -1);
 		i++;
 	}
 	free_argv(arg_chain);
