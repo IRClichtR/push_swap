@@ -3,7 +3,7 @@ NAME		= push_swap
 CORE_SRC	= $(addprefix core_fcts/, main.c check_av.c    free_all.c    free_av.c push_swap.c   push_to_b.c \
 sort_3.c sort_a_left.c	check_num.c   push_back.c   set_pile.c    sort_5.c)
 
-SORT_SRC	= $(addprefix sort_utils/, check_if_push_comp.c find_bigger.c pb_mid2.c \
+SORT_SRC	= $(addprefix sort_utils/, check_if_push_comp.c find_bigger.c pb_mid2.c select_idxa.c\
 sort_pile.c check_if_sorted.c  pb_beg.c save_size.c	create_chunks.c pb_end.c \
 select_idxb.c do_best_push.c pb_mid1.c select_move.c save_pile.c)
 

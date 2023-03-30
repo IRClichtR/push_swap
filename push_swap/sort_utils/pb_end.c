@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 16:17:17 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/29 16:17:19 by ftuernal         ###   ########.fr       */
+/*   Created: 2023/03/07 17:31:36 by ftuernal          #+#    #+#             */
+/*   Updated: 2023/03/30 12:43:17 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 void	pb_end(t_pile *a, t_pile *b, int *sorted_tab, int size)
 {
-	while (check_if_push_comp(a, sorted_tab, 4, size) == 1)
+	int	idx;
+
+	while (check_if_push_comp(a, sorted_tab, 3, size) == 3)
 	{
-		if (create_chunks(sorted_tab, size, a->pile[0][0]) == 4)
-			push(a, b, 'b');
+		idx = select_idxa(a, sorted_tab, 3);
+		if (ft_strncmp(select_move(a, idx), "rot", 3) == 0)
+			loop_ra(a, idx);
 		else
-			rotate(a, 'a');
+			loop_rra(a, idx);
+		push(a, b, 'b');
 	}
 }
