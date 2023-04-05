@@ -6,7 +6,7 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 11:37:03 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/30 10:35:00 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:00:56 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	check_neg_lim(char *arg)
 {
 	char	*first_digits;
 
+	while (*(arg + 1) == 48)
+		arg++;
 	if (ft_strlen(arg) > 11)
 		return (-1);
 	if (ft_strlen(arg) < 11)
@@ -29,6 +31,7 @@ static int	check_neg_lim(char *arg)
 		if (ft_atoi(arg + 8) > 48)
 			return (free(first_digits), -1);
 	}
+	free(first_digits);
 	return (1);
 }
 
@@ -45,6 +48,8 @@ static int	check_pos_lim(char *arg)
 	}
 	else if (ft_strlen(arg) < 10)
 		return (1);
+	while (*arg == 48)
+		arg++;
 	if (ft_strlen(arg) > 10)
 		return (-1);
 	first_digits = ft_substr(arg, 0, 8);
@@ -61,7 +66,7 @@ static int	check_if_number(char *arg)
 	int	i;
 
 	i = 0;
-	if (ft_strncmp(arg, "-", 2) == 0)
+	if (ft_strncmp(arg, "-", 2) == 0 || ft_strncmp(arg, "+", 2) == 0)
 		return (-1);
 	if (arg[i] == '-' || arg[i] == '+')
 		i += 1;

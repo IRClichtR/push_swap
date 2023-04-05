@@ -6,23 +6,11 @@
 /*   By: ftuernal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:32:57 by ftuernal          #+#    #+#             */
-/*   Updated: 2023/03/30 11:46:13 by ftuernal         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:31:45 by ftuernal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	push_back_ends(t_pile *a, t_pile *b)
-{
-	if (b->pile[0][0] < a->pile[0][0])
-		push(b, a, 'a');
-	else
-	{
-		push(b, a, 'a');
-		rotate(a, 'a');
-	}
-	push(b, a, 'a');
-}
 
 static int	smallest_value(t_pile *src)
 {
@@ -40,14 +28,32 @@ static int	smallest_value(t_pile *src)
 	return (smallest);
 }
 
+static void	push_back_ends(t_pile *a, t_pile *b)
+{
+	if (b->pile[0][0] < a->pile[0][0])
+		push(b, a, 'a');
+	else
+	{
+		push(b, a, 'a');
+		rotate(a, 'a');
+	}
+	push(b, a, 'a');
+	if (value_at_idx(a, 0) != smallest_value(a))
+		rotate(a, 'a');
+}
+
 void	sort_5(t_pile *a, t_pile *b)
 {
 	int	*o_tab;
+	int	smallest;
+	int	biggest;
 
+	smallest = smallest_value(a);
+	biggest = find_biggest(a);
 	while (a->size != 3)
 	{
-		if (a->pile[0][0] == find_biggest(a)
-			|| a->pile[0][0] == smallest_value(a))
+		if (a->pile[0][0] == smallest
+			|| a->pile[0][0] == biggest)
 			push(a, b, 'b');
 		else
 			rotate(a, 'a');
